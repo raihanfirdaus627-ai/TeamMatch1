@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Team Match - temukan teman satu tim dan project kampus yang cocok dengan skill kamu.">
+  <title>Team Match — Temukan Tim Terbaikmu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="#" data-page="home">
+      <span class="brand-mark">TM</span>
+      <span><strong>Team Match</strong><small>Find your best team</small></span>
+    </a>
+    <p class="nav-label">MENU UTAMA</p>
+    <nav class="nav-menu" aria-label="Navigasi utama">
+      <button class="nav-link active" data-page="home"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></svg></span> Dashboard</button>
+      <button class="nav-link" data-page="explore"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="7.3"/><path d="m16.2 16.2 5 5M10.8 6.8l2.2 4-4 2.2"/></svg></span> Jelajah</button>
+      <button class="nav-link" data-page="matches"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8zM19 15l1 3 3 1-3 1-1 3-1-3-3-1 3-1z"/></svg></span> Rekomendasi</button>
+      <button class="nav-link chat-nav-link" data-page="chat"><span class="nav-icon chat-nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v13H9l-5 4z"/></svg></span> Chat <span class="nav-badge" id="chatNavBadge">3</span></button>
+      <button class="nav-link" data-page="profile"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7.5" r="4"/><path d="M4 21c.5-4.2 3.2-6.3 8-6.3s7.5 2.1 8 6.3z"/></svg></span> Profile</button>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="help-card"><span class="help-icon">✦</span><strong>Temukan tim impianmu</strong><p>Gabungkan skill dan wujudkan ide bersama.</p></div>
+      <div class="sidebar-user"><div class="avatar" id="sideAvatar">RF</div><div><strong id="sideName">Raihan Firdaus</strong><small>Mahasiswa</small></div></div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <button class="mobile-menu" id="menuToggle" aria-label="Buka menu">☰</button>
+      <div><p class="eyebrow">PLATFORM KOLABORASI MAHASISWA</p><h1 id="pageTitle">Dashboard</h1></div>
+      <div class="top-actions"><span class="online-dot"></span><span class="top-user" id="topName">Raihan Firdaus</span><div class="avatar small-avatar" id="topAvatar">RF</div></div>
+    </header>
+
+    <section class="page active" id="page-home">
+      <div class="hero">
+        <div class="hero-copy"><span class="hero-pill">✦ Ruang kolaborasi mahasiswa</span>
+          <h2>Ide hebat dimulai<br>bersama <span>tim yang tepat.</span></h2>
+          <p id="welcomeText">Halo, Raihan! Selamat datang di website Team Match. Temukan project dan teman satu tim yang sesuai dengan skill kamu.</p>
+          <div class="hero-actions"><button class="btn btn-light" data-goto="explore">Jelajahi Project <span>→</span></button><button class="btn btn-outline-light" data-goto="competitions">Pusat Informasi Lomba <span>→</span></button></div>
+        </div>
+        <div class="hero-art" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="float-card card-code">〈 / 〉<small>Build ideas</small></div><div class="float-card card-team"><span>✦</span><div><b>Teamwork</b><small>Make it happen</small></div></div><div class="big-orb">TM</div><span class="spark spark-one">✦</span><span class="spark spark-two">✧</span></div>
+      </div>
+
+      <div class="section-heading"><div><p class="eyebrow">RINGKASAN</p><h2>Dashboard kamu</h2></div><span class="muted">Mulai berkolaborasi hari ini</span></div>
+      <div class="stats-grid">
+        <article class="stat-card stat-clickable" id="createProjectStat" role="button" tabindex="0"><div class="stat-icon purple">＋</div><div><p>Total Projek</p><h3 id="statProjects">0</h3><small>Klik untuk membuat projek</small></div></article>
+        <article class="stat-card stat-clickable" id="myProjectsStat" role="button" tabindex="0"><div class="stat-icon blue">▦</div><div><p>Proyek Saya</p><h3 id="statRoles">0</h3><small>Projek yang kamu buat</small></div></article>
+        <article class="stat-card stat-clickable" id="invitesStat" role="button" tabindex="0"><div class="stat-icon green">✉</div><div><p>Undangan</p><h3 id="statSkills">0</h3><small>Undangan untukmu</small></div></article>
+      </div>
+
+      <div class="section-heading section-gap"><div><p class="eyebrow">DIPILIH UNTUKMU</p><h2>Project pilihan</h2></div><button class="text-button" data-goto="explore">Lihat semua →</button></div>
+      <div class="project-grid" id="homeProjects"></div>
+      <div class="section-heading section-gap"><div><p class="eyebrow">AKTIVITAS PROJECT</p><h2>Permintaan Bergabung</h2></div><span class="muted">Mahasiswa yang ingin bergabung ke project kamu</span></div>
+      <div class="join-request-list" id="dashboardJoinRequests"></div>
+      <section class="dashboard-create hidden" id="dashboardCreate">
+      <div class="section-heading section-gap"><div><p class="eyebrow">WUJUDKAN IDEMU</p><h2>Buat project baru</h2></div><button class="text-button" id="closeCreate">Tutup ✕</button></div>
+      <form class="form-card" id="projectForm">
+        <div class="form-section-title"><span>01</span><div><h3>Informasi project</h3><p>Berikan gambaran singkat tentang project kamu.</p></div></div>
+        <div class="form-grid">
+          <label class="field full"><span>Nama project <b>*</b></span><input name="name" required maxlength="80" placeholder="Contoh: Campus Event Management" /></label>
+          <label class="field"><span>Kategori <b>*</b></span><select name="category" required><option value="">Pilih kategori</option><option>Web Development</option><option>Mobile App</option><option>Artificial Intelligence</option><option>Education</option><option>IoT</option></select></label>
+          <label class="field"><span>Target anggota</span><select name="members"><option>2–3 orang</option><option selected>4–5 orang</option><option>6–8 orang</option><option>Lebih dari 8 orang</option></select></label>
+          <label class="field"><span>Batas waktu bergabung</span><input type="date" name="deadline" required /></label>
+          <label class="field full"><span>Deskripsi project <b>*</b></span><textarea name="description" required rows="4" maxlength="500" placeholder="Jelaskan masalah yang ingin diselesaikan dan tujuan project..."></textarea></label>
+          <label class="field full"><span>Skill yang dibutuhkan</span><input name="skills" placeholder="Contoh: Figma, HTML, CSS, JavaScript" /></label>
+        </div>
+        <div class="form-section-title form-section-second"><span>02</span><div><h3>Role yang dibutuhkan</h3><p>Pilih satu atau lebih peran untuk anggota tim.</p></div></div>
+        <div class="role-options">
+          <label class="role-check"><input type="checkbox" name="roles" value="UI/UX Designer"><span class="checkmark">✓</span><span>UI/UX Designer</span></label>
+<label class="role-check"><input type="checkbox" name="roles" value="Frontend Developer"><span class="checkmark">✓</span><span>Frontend Developer</span></label>
+<label class="role-check"><input type="checkbox" name="roles" value="Backend Developer"><span class="checkmark">✓</span><span>Backend Developer</span></label>
+<label class="role-check"><input type="checkbox" name="roles" value="Mobile Developer"><span class="checkmark">✓</span><span>Mobile Developer</span></label>
+<label class="role-check"><input type="checkbox" name="roles" value="Data Analyst"><span class="checkmark">✓</span><span>Data Analyst</span></label>
+<label class="role-check"><input type="checkbox" name="roles" value="AI/ML Engineer"><span class="checkmark">✓</span><span>AI/ML Engineer</span></label>
+<label class="role-check"><input type="checkbox" name="roles" value="Cyber Security"><span class="checkmark">✓</span><span>Cyber Security</span></label>
+<label class="role-check"><input type="checkbox" name="roles" value="Project Manager"><span class="checkmark">✓</span><span>Project Manager</span></label>
+        </div>
+        <label class="field"><span>Nama pembuat</span><input name="creator" id="creatorInput" placeholder="Nama kamu" /></label>
+        <div class="form-footer"><p><b>*</b> Wajib diisi. Data project tersimpan di browser ini.</p><button type="submit" class="btn btn-primary">＋ Publikasikan Project</button></div>
+      </form>
+    </section>
+    </section>
+
+    <section class="page" id="page-explore">
+      <div class="page-intro"><p class="eyebrow">TEMUKAN KOLABORASI</p><h2>Jelajah semua project</h2><p>Cari project berdasarkan nama, kategori, skill, atau role. Persentase kecocokan dihitung dari profilmu menggunakan metode SAW.</p></div>
+      <div class="filter-panel">
+        <label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Cari nama project atau skill..." /></label>
+        <label class="filter-field"><span>Role</span><select id="roleFilter"><option value="">Semua role</option><option>UI/UX Designer</option><option>Frontend Developer</option><option>Backend Developer</option><option>Mobile Developer</option><option>Data Analyst</option><option>AI/ML Engineer</option><option>Cyber Security</option><option>Project Manager</option></select></label>
+        <label class="filter-field"><span>Kategori</span><select id="categoryFilter"><option value="">Semua kategori</option><option>Web Development</option><option>Mobile App</option><option>Artificial Intelligence</option><option>Education</option><option>IoT</option></select></label>
+        <button class="btn btn-soft" id="resetFilters">Reset</button>
+      </div>
+      <div class="result-line"><span id="resultCount">0 project ditemukan</span><span class="muted">Rekomendasi diperbarui sesuai filter</span></div>
+      <div class="project-grid" id="allProjects"></div>
+      <div class="empty-state hidden" id="emptyState"><span>⌕</span><h3>Project belum ditemukan</h3><p>Coba kata kunci atau filter yang berbeda.</p><button class="btn btn-primary" id="emptyReset">Reset pencarian</button></div>
+    </section>
+
+    <section class="page" id="page-matches">
+      <div class="page-intro"><p class="eyebrow">TEMUKAN ANGGOTA TIM</p><h2>Rekomendasi mahasiswa</h2><p>Rekomendasi hanya tersedia untuk project yang sudah kamu publikasikan. Pilih project untuk melihat mahasiswa dengan kecocokan SAW tertinggi.</p></div>
+      <div class="filter-panel"><label class="filter-field full"><span>Pilih project yang sudah dipublikasikan</span><select id="matchProjectSelect"><option value="">Pilih project</option></select></label></div>
+      <div class="result-line"><span id="studentResultCount">Pilih project terlebih dahulu</span><span class="muted">Peringkat berdasarkan metode SAW</span></div>
+      <div class="student-grid" id="studentResults"></div>
+      <div class="empty-state hidden" id="studentEmpty"><h3>Belum ada rekomendasi</h3><p>Publikasikan project dari Dashboard agar mahasiswa yang cocok dapat ditampilkan.</p><button class="btn btn-primary" data-goto="home">Ke Dashboard</button></div>
+    </section>
+    <section class="page" id="page-myprojects">
+      <div class="page-intro"><p class="eyebrow">PROJECT MILIKMU</p><h2>Proyek saya</h2><p>Kelola semua project yang sudah kamu publikasikan.</p></div>
+      <div class="project-grid" id="myProjectList"></div>
+      <div class="empty-state hidden" id="myProjectEmpty"><h3>Belum ada project</h3><p>Buat dan publikasikan project melalui Dashboard.</p></div>
+    </section>
+    <section class="page" id="page-invites">
+      <div class="page-intro"><p class="eyebrow">AKTIVITAS</p><h2>Undangan untukmu</h2><p>Lihat mahasiswa dan project yang mengundangmu.</p></div>
+      <div class="invite-list" id="dashboardInviteList"></div>
+    </section>
+    <section class="page" id="page-competitions">
+      <div class="page-intro"><p class="eyebrow">PELUANG & PRESTASI</p><h2>Pusat Informasi Lomba</h2><p>Temukan kompetisi, cek hadiah dan biaya pendaftaran, serta aktifkan pengingat deadline.</p></div>
+      <div class="competition-filters">
+        <label class="search-box"><span>⌕</span><input id="competitionSearch" type="search" placeholder="Cari lomba, penyelenggara, atau keahlian..."></label>
+        <label class="filter-field"><span>Bidang</span><select id="competitionField"><option value="">Semua bidang</option><option>UI/UX Design</option><option>Software Development</option><option>Data Science</option><option>Business</option><option>Esai</option></select></label>
+        <label class="filter-field"><span>Waktu</span><select id="competitionDeadline"><option value="">Semua deadline</option><option value="urgent">Mendesak (&lt; 7 hari)</option><option value="month">Bulan ini</option></select></label>
+        <label class="filter-field"><span>Peserta</span><select id="competitionType"><option value="">Individu & Tim</option><option>Individu</option><option>Tim</option></select></label>
+        <button class="btn btn-soft" id="competitionReset">Reset filter</button>
+      </div>
+      <div class="competition-alert hidden" id="competitionAlert"><strong id="competitionAlertTitle">Perhatian</strong><p id="competitionAlertText"></p><button class="btn btn-primary" id="showUrgentCompetitions">Lihat lomba</button></div>
+      <div class="result-line"><span id="competitionCount">0 lomba</span><span class="muted">Pengingat aktif tersimpan di browser</span></div>
+      <div class="competition-grid" id="competitionList"></div>
+      <p class="demo-note">Informasi lomba merupakan data contoh/demo. Pastikan memeriksa situs resmi penyelenggara untuk ketentuan dan deadline terbaru.</p>
+    </section>
+    <section class="page" id="page-profile">
+      <div class="profile-topbar">
+        <h2>Profil Saya</h2>
+        <div class="profile-top-actions">
+          <button type="button" class="profile-tool" id="profilePhotoBtn" title="Ubah foto profil" aria-label="Ubah foto profil">▣</button>
+          <button type="button" class="profile-tool" id="profileSettingsBtn" title="Pengaturan profil" aria-label="Pengaturan profil">⚙</button>
+          <button type="button" class="profile-tool logout-tool" id="profileLogoutBtn" title="Keluar" aria-label="Keluar">⇥</button>
+          <input type="file" id="profilePhotoInput" accept="image/*" hidden>
+        </div>
+      </div>
+      <div class="profile-data-grid">
+        <article class="profile-info-card"><div class="profile-info-heading"><span class="profile-info-icon">▤</span><h3>Identitas Mahasiswa</h3></div><div class="profile-facts">
+          <div><small>Nomor Pokok Mahasiswa</small><strong id="profileNpmView">Belum diisi</strong></div>
+          <div><small>IPK</small><strong id="profileIpkView">Belum diisi</strong></div>
+          <div><small>Angkatan / Kelas</small><strong id="profileYearClassView">2025 · TRPL</strong></div>
+        </div></article>
+        <article class="profile-info-card"><div class="profile-info-heading"><span class="profile-info-icon">▦</span><h3>Projek yang Pernah Dibuat</h3></div><div id="profileCreatedProjects" class="profile-chip-list"><span class="profile-muted">Belum ada projek yang dibuat.</span></div></article>
+        <article class="profile-info-card"><div class="profile-info-heading"><span class="profile-info-icon">↗</span><h3>Tautan Portofolio</h3></div><div id="profilePortfolioView" class="profile-link-list"><span class="profile-muted">Belum ada tautan portofolio.</span></div></article>
+        <article class="profile-info-card"><div class="profile-info-heading"><span class="profile-info-icon">♡</span><h3>Lowongan Projek Disimpan</h3></div><div id="profileSavedProjects" class="profile-chip-list"><span class="profile-muted">Belum ada projek tersimpan.</span></div></article>
+      </div>
+      <div class="profile-layout">
+        <aside class="profile-summary"><div class="profile-avatar" id="profileAvatar">RF</div><h3 id="profileDisplayName">Raihan Firdaus</h3><p id="profileDisplayRole">Mahasiswa · Calon Software Developer</p><div class="profile-divider"></div><div class="profile-mini"><span>✦</span><div><small>STATUS</small><b>Siap berkolaborasi</b></div></div><button class="btn btn-soft full-width" id="editProfileBtn">Edit Profil</button></aside>
+        <form class="form-card profile-form" id="profileForm">
+          <div class="form-section-title"><span>✎</span><div><h3>Identitas pengguna</h3><p>Informasi ini digunakan untuk personalisasi rekomendasi.</p></div></div>
+          <div class="form-grid">
+            <label class="field"><span>Nama lengkap <b>*</b></span><input name="name" id="profileName" required value="Raihan Firdaus" /></label>
+            <label class="field"><span>Angkatan</span><input name="year" id="profileYear" placeholder="Contoh: 2025" /></label>
+            <label class="field"><span>Nomor Pokok Mahasiswa (NPM)</span><input name="npm" id="profileNpm" placeholder="Masukkan NPM" /></label>
+            <label class="field"><span>IPK</span><input name="ipk" id="profileIpk" type="number" min="0" max="4" step="0.01" placeholder="Contoh: 3.75" /></label>
+            <label class="field"><span>Kelas</span><input name="className" id="profileClass" placeholder="Contoh: TRPL 1A" /></label>
+            <label class="field"><span>Role utama</span><select name="role" id="profileRole"><option>UI/UX Designer</option><option>Frontend Developer</option><option>Backend Developer</option><option>Mobile Developer</option><option>Data Analyst</option><option>AI/ML Engineer</option><option>Cyber Security</option><option>Project Manager</option></select></label>
+            <label class="field full"><span>Skill</span><input name="skills" id="profileSkills" placeholder="Pisahkan dengan koma, contoh: HTML, CSS, Figma" /></label>
+            <label class="field full"><span>Minat</span><input name="interests" id="profileInterests" placeholder="Contoh: Web development, AI, pendidikan" /></label>
+            <label class="field full"><span>Pengalaman</span><textarea name="experience" id="profileExperience" rows="3" placeholder="Ceritakan pengalaman organisasi, project, atau pelatihan..."></textarea></label>
+            <label class="field full"><span>Tautan portofolio</span><input name="portfolio" id="profilePortfolio" type="url" placeholder="https://github.com/username atau tautan lainnya" /></label>
+          </div>
+          <div class="form-footer"><p>Profil tersimpan secara lokal di browser.</p><button class="btn btn-primary" type="submit">Simpan Profil</button></div>
+        </form>
+      </div>
+    </section>
+    <section class="page" id="page-chat">
+      <div class="page-intro"><p class="eyebrow">KOMUNIKASI & KOLABORASI</p><h2>Chat mahasiswa</h2><p>Terhubung dengan teman satu tim, diskusikan project, dan lihat undangan kolaborasi.</p></div>
+      <div class="chat-layout">
+        <aside class="chat-sidebar">
+          <div class="chat-sidebar-head"><h3>Pesan</h3><span class="chat-online">● Aktif</span></div>
+          <label class="chat-search"><span>⌕</span><input id="chatSearch" type="search" placeholder="Cari percakapan..." /></label>
+          <div class="chat-tabs"><button class="chat-tab active" data-chat-filter="all">Semua</button><button class="chat-tab" data-chat-filter="unread">Belum dibaca</button><button class="chat-tab" data-chat-filter="invites">Undangan <span class="invite-count" id="chatInviteCount">1</span></button></div>
+          <div id="conversationList" class="conversation-list"></div>
+        </aside>
+        <section class="chat-main">
+          <div class="chat-welcome" id="chatWelcome"><div class="chat-welcome-icon">☏</div><h3>Mulai percakapan</h3><p>Pilih mahasiswa di sebelah kiri untuk melihat pesan atau membalas chat.</p></div>
+          <div class="chat-conversation hidden" id="chatConversation">
+            <header class="conversation-header"><button type="button" class="chat-back" id="chatBackBtn" aria-label="Kembali ke daftar chat">←</button><div class="avatar chat-person-avatar" id="activeChatAvatar">NA</div><div class="conversation-person"><strong id="activeChatName">Nama Mahasiswa</strong><small id="activeChatStatus">Mahasiswa · Online</small></div><button class="chat-more" id="chatInviteBtn" title="Kirim undangan project">＋ Undang ke project</button></header>
+            <div class="invite-banner hidden" id="inviteBanner"><div><strong>Undangan kolaborasi</strong><p id="inviteText">Kamu menerima undangan bergabung ke project.</p></div><div class="invite-actions"><button class="btn btn-primary" id="acceptInvite">Terima</button><button class="btn btn-soft" id="declineInvite">Tolak</button></div></div>
+            <div class="message-list" id="messageList" aria-live="polite"></div>
+            <form class="chat-compose" id="chatForm"><button type="button" class="chat-attach" id="quickInvite" title="Kirim undangan">＋</button><input id="chatMessageInput" autocomplete="off" maxlength="1000" placeholder="Tulis pesan..." aria-label="Tulis pesan" required /><button class="chat-send" type="submit" aria-label="Kirim pesan">➤</button></form>
+            <p class="chat-demo-note">Demo: pesan disimpan di browser ini, belum dikirim ke pengguna lain.</p>
+          </div>
+        </section>
+
+      </div>
+    </section>
+
+    <footer class="footer"><span>© 2026 Team Match</span><span>Dibuat untuk kolaborasi yang lebih baik <b>♥</b></span></footer>
+  </main>
+
+  <div class="toast" id="toast" role="status"></div>
+  <dialog class="detail-dialog" id="detailDialog"><button class="dialog-close" id="closeDialog" aria-label="Tutup">×</button><div id="detailContent"></div></dialog>
+  <script src="script.js"></script>
+</body>
+</html>
